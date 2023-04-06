@@ -39,8 +39,13 @@ const PokemonContextProvider = (props) => {
 
   const [debouncedFilterByElement] = useDebouncedCallback(filterByElement, 500);
 
+  const setPokemon = (pokemon) => {
+    setLoading(false);
+    setPokemonList([pokemon]);
+  };
+
   return (
-    <PokemonContext.Provider value={{ pokemonList, loading, error, debouncedFilterByElement }}>
+    <PokemonContext.Provider value={{ pokemonList, loading, error, debouncedFilterByElement, setPokemon }}>
       {props.children}
     </PokemonContext.Provider>
   );
